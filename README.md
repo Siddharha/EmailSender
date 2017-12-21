@@ -1,6 +1,6 @@
 # EmailSender
-### Creator:
-Siddhartha Maji
+**Creator:**
+_Siddhartha Maji_
 ## Description
 Siplify Email Sending. Just Create Simple Template for your mail and you are good to go.
 ## Language
