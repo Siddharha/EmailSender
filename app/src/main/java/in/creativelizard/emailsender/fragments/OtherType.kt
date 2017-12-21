@@ -1,5 +1,6 @@
-package `in`.creativelizard.emailsender
+package `in`.creativelizard.emailsender.fragments
 
+import `in`.creativelizard.emailsender.R
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +10,9 @@ import android.view.ViewGroup
 /**
  * Created by siddhartha on 21/12/17.
  */
-class AllType : Fragment() {
-    var rootview:View ?= null
+class OtherType : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootview = inflater?.inflate(R.layout.all_type,container,false)
+        val rootview= inflater?.inflate(R.layout.other_type,container,false)
         return rootview
     }
 }

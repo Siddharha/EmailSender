@@ -1,5 +1,8 @@
-package `in`.creativelizard.emailsender
+package `in`.creativelizard.emailsender.adapters
 
+import `in`.creativelizard.emailsender.fragments.AllType
+import `in`.creativelizard.emailsender.fragments.LeaveType
+import `in`.creativelizard.emailsender.fragments.OtherType
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter

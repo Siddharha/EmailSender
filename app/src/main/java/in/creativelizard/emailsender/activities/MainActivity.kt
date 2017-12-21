@@ -1,5 +1,7 @@
-package `in`.creativelizard.emailsender
+package `in`.creativelizard.emailsender.activities
 
+import `in`.creativelizard.emailsender.adapters.EmailTypePagerAdapter
+import `in`.creativelizard.emailsender.R
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadPager() {
-        content_pager_frame.adapter = EmailTypePagerAdapter(supportFragmentManager,tabsCount)
+        content_pager_frame.adapter = EmailTypePagerAdapter(supportFragmentManager, tabsCount)
         typeTab.setupWithViewPager(content_pager_frame)
     }
 
