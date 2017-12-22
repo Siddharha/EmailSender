@@ -21,18 +21,7 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            res.srcDirs =
-                    [
-                            'src/main/res/layout/activities',
-                            'src/main/res/layout/fragments',
-                            'src/main/res/layout/content',
-                            'src/main/res/layout',
-                            'src/main/res'
-                    ]
-        }
-    }
+
 }
 
 
