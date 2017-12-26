@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Email Sender</string>
+    <string name="template_name">Enter Template Name</string>
+    <string name="email_body">Enter Email Body</string>
 </resources>

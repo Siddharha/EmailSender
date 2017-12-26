@@ -14,12 +14,11 @@
         android:padding="5dp"
         android:background="@drawable/text_border"
         android:ems="10"
-        android:hint="Enter Template Name"
+        android:hint="@string/template_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/etContent"
         android:layout_width="0dp"
@@ -30,7 +29,7 @@
         android:padding="5dp"
         android:textAlignment="gravity"
         android:gravity="top"
-        android:hint="Enter Email Body"
+        android:hint="@string/email_body"
         android:layout_marginTop="8dp"
         android:background="@drawable/text_border"
         android:ems="10"
