@@ -5,4 +5,6 @@ package `in`.creativelizard.emailsender.beans
  */
 class AllTypeItem {
      var content:String?=null
+     var title:String?=null
+     var id:Int ?=null
 }

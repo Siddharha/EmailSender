@@ -46,7 +46,9 @@ class AllTypeFragment : Fragment() {
     private fun loadList() {
         for (i in 1..10){
           val s =  AllTypeItem()
-            s.content = "Sid_"+i
+            s.title = "Sid_"+i
+            s.content = "Test Sample for Email Sender"
+            s.id= i
            // Log.e(">>",s.content)
            allTypeList?.add(s)
         }

@@ -1,11 +1,15 @@
 package `in`.creativelizard.emailsender.adapters
 
+import `in`.creativelizard.emailsender.activities.EditTemplate
+import `in`.creativelizard.emailsender.activities.MainActivity
 import `in`.creativelizard.emailsender.beans.AllTypeItem
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.all_type_list_cell.view.*
 
@@ -24,7 +28,10 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
         holder.bindItems(arrayList[position])
 
         holder.itemView.setOnClickListener {
-            Toast.makeText(context,arrayList[position].content,Toast.LENGTH_SHORT).show()
+            val i = Intent(context,EditTemplate::class.java)
+            i.putExtra("title",arrayList[position].title)
+            i.putExtra("id",arrayList[position].id)
+            context.startActivity(i)
         }
     }
 
