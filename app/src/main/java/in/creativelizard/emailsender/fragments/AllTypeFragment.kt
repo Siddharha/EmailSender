@@ -44,7 +44,7 @@ class AllTypeFragment : Fragment() {
     }
 
     private fun loadList() {
-        for (i in 1..10){
+        for (i in 1..30){
           val s =  AllTypeItem()
             s.title = "Sid_"+i
             s.content = "Test Sample for Email Sender"
