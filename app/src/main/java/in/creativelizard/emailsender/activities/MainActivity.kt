@@ -12,17 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initialize()
         loadPager()
-        //debaugTest()
-    }
-
-    private fun initialize() {
-
-    }
-
-    private fun debaugTest() {
-        Toast.makeText(this,tabsCount.get(0),Toast.LENGTH_LONG).show()
     }
 
     private fun loadPager() {

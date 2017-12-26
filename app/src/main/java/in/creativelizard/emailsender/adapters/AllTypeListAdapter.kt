@@ -27,7 +27,7 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
     override fun onBindViewHolder(holder: AllTypeListAdapter.ViewHolder, position: Int) {
         holder.bindItems(arrayList[position])
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.setOnLongClickListener {
             val i = Intent(context,EditTemplate::class.java)
             i.putExtra("title",arrayList[position].title)
             i.putExtra("id",arrayList[position].id)
