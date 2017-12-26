@@ -10,7 +10,7 @@ import android.view.ViewGroup
 /**
  * Created by siddhartha on 21/12/17.
  */
-class OtherType : Fragment() {
+class OtherTypeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootview= inflater?.inflate(R.layout.other_type,container,false)
         return rootview

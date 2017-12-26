@@ -10,7 +10,7 @@ import android.view.ViewGroup
 /**
  * Created by siddhartha on 21/12/17.
  */
-class LeaveType : Fragment() {
+class LeaveTypeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootview= inflater?.inflate(R.layout.leave_type,container,false)

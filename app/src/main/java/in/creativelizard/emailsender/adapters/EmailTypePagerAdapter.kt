@@ -1,8 +1,8 @@
 package `in`.creativelizard.emailsender.adapters
 
-import `in`.creativelizard.emailsender.fragments.AllType
-import `in`.creativelizard.emailsender.fragments.LeaveType
-import `in`.creativelizard.emailsender.fragments.OtherType
+import `in`.creativelizard.emailsender.fragments.AllTypeFragment
+import `in`.creativelizard.emailsender.fragments.LeaveTypeFragment
+import `in`.creativelizard.emailsender.fragments.OtherTypeFragment
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -13,11 +13,11 @@ import android.support.v4.app.FragmentPagerAdapter
 class EmailTypePagerAdapter(fm:FragmentManager, private val pageCount:Array<String>):FragmentPagerAdapter(fm){
     override fun getItem(position: Int): Fragment? {
          when (position){
-            0 -> return AllType()
-            1 -> return LeaveType()
-            2 -> return OtherType()
+            0 -> return AllTypeFragment()
+            1 -> return LeaveTypeFragment()
+            2 -> return OtherTypeFragment()
              else -> {
-                 return AllType()
+                 return AllTypeFragment()
              }
         }
     }
