@@ -45,7 +45,7 @@ class AllTypeFragment : Fragment() {
 
     private fun loadList() {
         for (i in 1..10){
-          var s =  AllTypeItem()
+          val s =  AllTypeItem()
             s.content = "Sid_"+i
            // Log.e(">>",s.content)
            allTypeList?.add(s)

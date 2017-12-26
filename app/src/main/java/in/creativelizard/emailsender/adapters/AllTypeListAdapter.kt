@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.all_type_list_cell.view.*
 
 /**
@@ -21,6 +22,10 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
 
     override fun onBindViewHolder(holder: AllTypeListAdapter.ViewHolder, position: Int) {
         holder.bindItems(arrayList[position])
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(context,arrayList[position].content,Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
