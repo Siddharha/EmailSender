@@ -45,7 +45,7 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
            // i.data = Uri.parse("mailto:")
             i.type = "text/plain"
             i.data = Uri.parse("siddhartha@creativelizard.in")
-            i.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+            i.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
             i.putExtra(Intent.EXTRA_EMAIL  ,to)
             i.putExtra(Intent.EXTRA_SUBJECT, arrayList[position].title)
             i.putExtra(Intent.EXTRA_TEXT   , arrayList[position].content)
