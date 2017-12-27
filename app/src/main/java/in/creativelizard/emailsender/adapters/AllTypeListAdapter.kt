@@ -30,8 +30,10 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
         holder.itemView.setOnLongClickListener {
             val i = Intent(context,EditTemplate::class.java)
             i.putExtra("title",arrayList[position].title)
+            i.putExtra("content",arrayList[position].content)
             i.putExtra("id",arrayList[position].id)
             context.startActivity(i)
+            true
         }
     }
 

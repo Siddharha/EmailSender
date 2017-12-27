@@ -7,7 +7,7 @@
     tools:context="in.creativelizard.emailsender.activities.EditTemplate">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etTepTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -19,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/etContent"
         android:layout_width="0dp"
@@ -26,16 +27,16 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:padding="5dp"
-        android:textAlignment="gravity"
-        android:gravity="top"
-        android:hint="@string/email_body"
         android:layout_marginTop="8dp"
         android:background="@drawable/text_border"
         android:ems="10"
+        android:gravity="top"
+        android:hint="@string/email_body"
         android:inputType="textMultiLine"
+        android:padding="5dp"
+        android:textAlignment="gravity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/etTepTitle" />
 </android.support.constraint.ConstraintLayout>
