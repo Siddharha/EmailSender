@@ -2,6 +2,7 @@ package `in`.creativelizard.emailsender.activities
 
 import `in`.creativelizard.emailsender.adapters.EmailTypePagerAdapter
 import `in`.creativelizard.emailsender.R
+import `in`.creativelizard.emailsender.db.DatabaseHandler
 import `in`.creativelizard.emailsender.utill.ConstantClass
 import android.app.Activity
 import android.content.Intent
@@ -13,11 +14,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var tabsCount = arrayOf("All Type", "Leave Type", "Other Type")
-    val CONTENT_ADDED =0
+    private val CONTENT_ADDED =0
+    var dbHandler: DatabaseHandler?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initialize()
         loadPager()
+    }
+
+    private fun initialize() {
+        dbHandler = DatabaseHandler(this)
     }
 
     private fun loadPager() {
@@ -39,8 +46,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveToDB(stringExtra: String?, stringExtra1: String?) {
-        Toast.makeText(this@MainActivity,"DB not Implemented yet!!",Toast.LENGTH_SHORT).show()
+    private fun saveToDB(title: String?, description: String?) {
+        dbHandler?.insurtTemplateData(title!!, description!!)
     }
 
 }
