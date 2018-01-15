@@ -60,4 +60,8 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
             itemView.tvMainContent.text = items.content
         }
     }
+
+    fun removeItem(position: Int) {
+        arrayList.removeAt(position)
+    }
 }
