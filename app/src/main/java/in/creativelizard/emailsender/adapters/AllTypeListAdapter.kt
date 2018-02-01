@@ -12,9 +12,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import kotlinx.android.synthetic.main.all_type.*
 import kotlinx.android.synthetic.main.all_type_list_cell.view.*
+
+
+
+
+
+
 
 /**
  * Created by siddhartha on 26/12/17.
@@ -42,8 +47,8 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
         }
 
         holder.itemView.setOnClickListener {
-            to?.set(0,"siddhartha@creativelizard.in")
-            val i = Intent(Intent.ACTION_VIEW)
+           /* to?.set(0,"siddhartha@creativelizard.in")
+            val i = Intent(Intent.ACTION_SEND)
             //i.type = "message/rfc822"
            // i.data = Uri.parse("mailto:")
             i.type = "text/plain"
@@ -52,7 +57,16 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
             i.putExtra(Intent.EXTRA_EMAIL  ,to)
             i.putExtra(Intent.EXTRA_SUBJECT, arrayList[position].title)
             i.putExtra(Intent.EXTRA_TEXT   , arrayList[position].content)
-            context.startActivity(i)
+
+            try {
+                context.startActivity(Intent.createChooser(i, "Send mail..."))
+            } catch (ex: android.content.ActivityNotFoundException) {
+                Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show()
+            }
+*/
+
+            sendMail()
+           // context.startActivity(i)
         }
 
         holder.itemView.imgDelete.setOnClickListener{
@@ -78,6 +92,19 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
         }
     }
 
+    private fun sendMail() {
+
+        val email = Intent(Intent.ACTION_SEND)
+        email.putExtra(Intent.EXTRA_EMAIL, to)
+        email.putExtra(Intent.EXTRA_SUBJECT, "sdfsdf")
+        email.putExtra(Intent.EXTRA_TEXT, "gdfgk;sl4096850968039eirsldkfj")
+
+        //need this to prompts email client only
+        email.type = "message/rfc822"
+
+        context.startActivity(Intent.createChooser(email, "Choose an Email client :"))
+    }
+
     override fun getItemCount(): Int {
         return arrayList.size
     }
@@ -86,7 +113,7 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
 
          var db: DatabaseHandler? = null
         fun bindItems(items: AllTypeItem) {
-            itemView.tvMainContent.text = items.content
+            itemView.tvMainContent.text = items.title
             db = DatabaseHandler(context)
         }
     }
