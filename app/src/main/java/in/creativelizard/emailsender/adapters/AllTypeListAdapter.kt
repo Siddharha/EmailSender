@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
+import kotlinx.android.synthetic.main.all_type.*
 import kotlinx.android.synthetic.main.all_type_list_cell.view.*
 
 /**
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.all_type_list_cell.view.*
 class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
                           private val context: Context,
                           private val layout: Int,
-                          private val fragment: AllTypeFragment) : RecyclerView.Adapter<AllTypeListAdapter.ViewHolder>() {
+                          private val fragment:AllTypeFragment) : RecyclerView.Adapter<AllTypeListAdapter.ViewHolder>() {
     private val to:Array<String>?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllTypeListAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(layout, parent, false)
@@ -56,33 +57,19 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
 
         holder.itemView.imgDelete.setOnClickListener{
             holder.db?.deleteTamplate(arrayList[position].id!!)
-/*.setListener(new Animator.AnimatorListener() {
-    @Override
-    public void onAnimationStart(Animator animator) {
-
-    }
-
-    @Override
-    public void onAnimationEnd(Animator animator) {
-
-    }
-
-    @Override
-    public void onAnimationCancel(Animator animator) {
-
-    }
-
-    @Override
-    public void onAnimationRepeat(Animator animator) {
-
-    }*/
             holder.itemView.animate().translationX(holder.itemView.width.toFloat()).setListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator?) {}
 
                 override fun onAnimationRepeat(animation: Animator?) {}
 
                 override fun onAnimationEnd(animation: Animator?) {
-                   // fragment.deleteTem(position)
+                    arrayList.clear()
+                    fragment.rlAllTypes.layoutManager = fragment.layoutManager
+                    fragment.rlAllTypes.adapter = fragment.allTypeListAdapter
+                    holder.itemView.clearAnimation()
+                    fragment.loadList()
+                    notifyDataSetChanged()
+
                 }
 
                 override fun onAnimationCancel(animation: Animator?) {}

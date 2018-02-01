@@ -22,9 +22,9 @@ import kotlinx.android.synthetic.main.all_type.*
  */
 class AllTypeFragment : Fragment() {
     private var rootview:View ?= null
-    private var allTypeListAdapter:AllTypeListAdapter ?=null
+     var allTypeListAdapter:AllTypeListAdapter ?=null
     private var allTypeList:ArrayList<AllTypeItem> ?=null
-    private var layoutManager:LinearLayoutManager ?=null
+     var layoutManager:LinearLayoutManager ?=null
     private var db: DatabaseHandler? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootview = inflater?.inflate(R.layout.all_type,container,false)
@@ -54,7 +54,7 @@ class AllTypeFragment : Fragment() {
         allTypeListAdapter?.notifyDataSetChanged()
     }
 
-    private fun loadList() {
+    fun loadList() {
      /*   for (i in 1..5){
           val s =  AllTypeItem()
             s.title = "Sid_"+i
@@ -70,12 +70,6 @@ class AllTypeFragment : Fragment() {
             }
         }
 
-        allTypeListAdapter?.notifyDataSetChanged()
-    }
-
-    fun deleteTem(position:Int){
-
-        allTypeList?.removeAt(position)
         allTypeListAdapter?.notifyDataSetChanged()
     }
 
