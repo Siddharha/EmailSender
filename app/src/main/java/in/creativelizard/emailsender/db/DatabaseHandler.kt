@@ -16,7 +16,7 @@ import android.widget.Toast
  */
 class DatabaseHandler (private val context: Context) :
         SQLiteOpenHelper(context, DatabaseConstant.DATABASE_NAME, null, DatabaseConstant.DATABASE_VERSION) {
-
+    val db:SQLiteDatabase = this.writableDatabase
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_EMAIL_SENDER_TABLE = ("CREATE TABLE " + DatabaseConstant.TABLE_EMAIL_SENDER + "("
                 + DatabaseConstant.COLUMN_ID + " INTEGER PRIMARY KEY autoincrement," + DatabaseConstant.COLUMN_SENDER_TITLE + " TEXT,"
@@ -32,7 +32,7 @@ class DatabaseHandler (private val context: Context) :
     }
 
     fun insurtTemplateData(title:String, description:String): Long {
-        val db:SQLiteDatabase = this.writableDatabase
+
         val values = ContentValues()
 
         values.put(DatabaseConstant.COLUMN_SENDER_TITLE,title)
@@ -61,6 +61,11 @@ class DatabaseHandler (private val context: Context) :
         }
         db.close()
         return tempList
+    }
+
+    fun deleteTamplate(id:Int): Boolean {
+        return db.delete(DatabaseConstant.TABLE_EMAIL_SENDER, DatabaseConstant.COLUMN_ID + "=" + id, null) > 0
+
     }
 
 }

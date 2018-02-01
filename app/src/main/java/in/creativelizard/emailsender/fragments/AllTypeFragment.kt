@@ -34,36 +34,13 @@ class AllTypeFragment : Fragment() {
     }
 
     private fun onActionPerform() {
-        val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                Toast.makeText(activity,"hi",Toast.LENGTH_SHORT).show()
-                val position = viewHolder.adapterPosition
-
-                if (direction == ItemTouchHelper.LEFT) {
-                      allTypeListAdapter!!.removeItem(position)
-                } else {
-                    /* removeView()
-                    edit_position = position
-                    alertDialog!!.setTitle("Edit Name")
-                    et_name!!.setText(names[position])
-                    alertDialog!!.show()*/
-                }
-            }
-        }
-
-        val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-        itemTouchHelper.attachToRecyclerView(rlAllTypes)
     }
 
     private fun initialize() {
         db = DatabaseHandler(activity)
         layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         allTypeList = ArrayList()
-        allTypeListAdapter = AllTypeListAdapter(allTypeList!!,context,R.layout.all_type_list_cell)
+        allTypeListAdapter = AllTypeListAdapter(allTypeList!!,context,R.layout.all_type_list_cell,this)
     }
 
     override fun onResume() {
@@ -93,6 +70,12 @@ class AllTypeFragment : Fragment() {
             }
         }
 
+        allTypeListAdapter?.notifyDataSetChanged()
+    }
+
+    fun deleteTem(position:Int){
+
+        allTypeList?.removeAt(position)
         allTypeListAdapter?.notifyDataSetChanged()
     }
 

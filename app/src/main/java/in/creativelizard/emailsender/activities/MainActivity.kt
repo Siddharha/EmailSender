@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadPager() {
         content_pager_frame.adapter = EmailTypePagerAdapter(supportFragmentManager, tabsCount)
+        content_pager_frame.offscreenPageLimit = 1
         typeTab.setupWithViewPager(content_pager_frame)
     }
 

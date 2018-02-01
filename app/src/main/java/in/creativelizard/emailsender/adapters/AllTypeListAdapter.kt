@@ -2,6 +2,9 @@ package `in`.creativelizard.emailsender.adapters
 
 import `in`.creativelizard.emailsender.activities.EditTemplate
 import `in`.creativelizard.emailsender.beans.AllTypeItem
+import `in`.creativelizard.emailsender.db.DatabaseHandler
+import `in`.creativelizard.emailsender.fragments.AllTypeFragment
+import android.animation.Animator
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -9,6 +12,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import kotlinx.android.synthetic.main.all_type_list_cell.view.*
 
 /**
@@ -16,7 +20,8 @@ import kotlinx.android.synthetic.main.all_type_list_cell.view.*
  */
 class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
                           private val context: Context,
-                          private val layout: Int) : RecyclerView.Adapter<AllTypeListAdapter.ViewHolder>() {
+                          private val layout: Int,
+                          private val fragment: AllTypeFragment) : RecyclerView.Adapter<AllTypeListAdapter.ViewHolder>() {
     private val to:Array<String>?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllTypeListAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(layout, parent, false)
@@ -48,6 +53,42 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
             i.putExtra(Intent.EXTRA_TEXT   , arrayList[position].content)
             context.startActivity(i)
         }
+
+        holder.itemView.imgDelete.setOnClickListener{
+            holder.db?.deleteTamplate(arrayList[position].id!!)
+/*.setListener(new Animator.AnimatorListener() {
+    @Override
+    public void onAnimationStart(Animator animator) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animator animator) {
+
+    }
+
+    @Override
+    public void onAnimationCancel(Animator animator) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animator animator) {
+
+    }*/
+            holder.itemView.animate().translationX(holder.itemView.width.toFloat()).setListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {}
+
+                override fun onAnimationRepeat(animation: Animator?) {}
+
+                override fun onAnimationEnd(animation: Animator?) {
+                   // fragment.deleteTem(position)
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {}
+            })
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -56,12 +97,10 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+         var db: DatabaseHandler? = null
         fun bindItems(items: AllTypeItem) {
             itemView.tvMainContent.text = items.content
+            db = DatabaseHandler(context)
         }
-    }
-
-    fun removeItem(position: Int) {
-        arrayList.removeAt(position)
     }
 }
