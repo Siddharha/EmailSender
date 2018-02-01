@@ -68,7 +68,7 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
                     fragment.rlAllTypes.adapter = fragment.allTypeListAdapter
                     holder.itemView.clearAnimation()
                     fragment.loadList()
-                    notifyDataSetChanged()
+                   // notifyDataSetChanged()
 
                 }
 
