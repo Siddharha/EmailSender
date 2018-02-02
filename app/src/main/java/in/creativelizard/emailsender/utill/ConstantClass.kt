@@ -7,7 +7,8 @@ class ConstantClass {
 
     companion object {
         val TITLE_MAIL = "title_mail"
-        val CONTENT_MAIL = "content_mail"
+        val CONTENT_MAIL = "content_mail"/**/
+        val BASE_URL = "https://creative-lizard.000webhostapp.com/"
     }
 
 }
