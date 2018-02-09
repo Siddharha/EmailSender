@@ -70,13 +70,29 @@ class EditTemplate : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        if(!etTepTitle.text.toString().isEmpty()) {
-            val i = Intent()
-            i.putExtra(ConstantClass.TITLE_MAIL, etTepTitle.text.toString())
-            i.putExtra(ConstantClass.CONTENT_MAIL, etContent.text.toString())
-            setResult(Activity.RESULT_OK, i)
+        if( !intent.hasExtra("id")) {
+            if(!etTepTitle.text.toString().isEmpty()) {
+                saveNote()
+            }
+        }else{
+            updateNote(intent.getIntExtra("id",0))
         }
         super.onBackPressed()
+    }
+
+    private fun updateNote(intExtra: Int) {
+        val i = Intent()
+        i.putExtra(ConstantClass.TITLE_MAIL, etTepTitle.text.toString())
+        i.putExtra(ConstantClass.CONTENT_MAIL, etContent.text.toString())
+        i.putExtra(ConstantClass.TEMP_ID, intExtra)
+        setResult(Activity.RESULT_OK, i)
+    }
+
+    private fun saveNote() {
+        val i = Intent()
+        i.putExtra(ConstantClass.TITLE_MAIL, etTepTitle.text.toString())
+        i.putExtra(ConstantClass.CONTENT_MAIL, etContent.text.toString())
+        setResult(Activity.RESULT_OK, i)
     }
 
 

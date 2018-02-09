@@ -41,15 +41,29 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(resultCode == Activity.RESULT_OK) {
-            saveToDB(data?.getStringExtra(ConstantClass.TITLE_MAIL), data?.getStringExtra(ConstantClass.CONTENT_MAIL))
+
+            if(data?.hasExtra(ConstantClass.TEMP_ID)!!){
+                updateToDB(data.getIntExtra(ConstantClass.TEMP_ID,0),
+                        data.getStringExtra(ConstantClass.TITLE_MAIL),
+                        data.getStringExtra(ConstantClass.CONTENT_MAIL))
+            }else {
+                saveToDB(data.getStringExtra(ConstantClass.TITLE_MAIL),
+                        data.getStringExtra(ConstantClass.CONTENT_MAIL))
+            }
         }else{
             Toast.makeText(this@MainActivity,"Template not saved!",Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun updateToDB(id: Int, title: String?, dec: String?) {
+        dbHandler?.updateTemplateData(id, title!!, dec!!)
+    }
+
     private fun saveToDB(title: String?, description: String?) {
         dbHandler?.insurtTemplateData(title!!, description!!)
     }
+
+
 
 }
 

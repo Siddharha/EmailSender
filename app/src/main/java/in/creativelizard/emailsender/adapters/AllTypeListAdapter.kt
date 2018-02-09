@@ -23,6 +23,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import `in`.creativelizard.emailsender.models.OutputMail
 import `in`.creativelizard.emailsender.utill.ApiClient
+import android.app.AlertDialog
+import android.content.DialogInterface
 import io.reactivex.Observable
 
 
@@ -56,26 +58,7 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
         }
 
         holder.itemView.setOnClickListener {
-           /* to?.set(0,"siddhartha@creativelizard.in")
-            val i = Intent(Intent.ACTION_SEND)
-            //i.type = "message/rfc822"
-           // i.data = Uri.parse("mailto:")
-            i.type = "text/plain"
-            i.data = Uri.parse("siddhartha@creativelizard.in")
-            i.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
-            i.putExtra(Intent.EXTRA_EMAIL  ,to)
-            i.putExtra(Intent.EXTRA_SUBJECT, arrayList[position].title)
-            i.putExtra(Intent.EXTRA_TEXT   , arrayList[position].content)
-
-            try {
-                context.startActivity(Intent.createChooser(i, "Send mail..."))
-            } catch (ex: android.content.ActivityNotFoundException) {
-                Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show()
-            }
-*/
-
-            sendMail()
-           // context.startActivity(i)
+            showSendMailPopup()
         }
 
         holder.itemView.imgDelete.setOnClickListener{
@@ -99,6 +82,21 @@ class AllTypeListAdapter (private val arrayList: ArrayList<AllTypeItem>,
             })
 
         }
+    }
+
+    private fun showSendMailPopup() {
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        builder.setTitle("Confirmation!")
+                .setMessage("Do you wanna send email?")
+                .setPositiveButton("YES",DialogInterface.OnClickListener(){ dialogInterface: DialogInterface, i: Int ->
+                    sendMail()
+                })
+                .setNegativeButton("NO",DialogInterface.OnClickListener(){ dialogInterface: DialogInterface, i: Int ->
+                   //
+                })
+                .create()
+                .show()
     }
 
     private fun sendMail() {

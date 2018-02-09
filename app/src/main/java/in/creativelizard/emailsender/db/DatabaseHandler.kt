@@ -42,6 +42,16 @@ class DatabaseHandler (private val context: Context) :
         return x
     }
 
+    fun updateTemplateData(id:Int,title:String,description:String): Int {
+        val values = ContentValues()
+        val updateQuery =  DatabaseConstant.COLUMN_ID + "=" + id
+        values.put(DatabaseConstant.COLUMN_SENDER_TITLE,title)
+        values.put(DatabaseConstant.COLUMN_SENDER_DESCRIPTION,description)
+        val x = db.update(DatabaseConstant.TABLE_EMAIL_SENDER,values,updateQuery,null)
+        Log.e("response","Done: "+x)
+        return x
+    }
+
     fun getAllTemplateData():ArrayList<AllTypeItem>{
 
         val tempList = ArrayList<AllTypeItem>()
